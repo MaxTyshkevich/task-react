@@ -8,11 +8,11 @@ interface SnackbarErrorProps {
 export const SnackbarError = ({ message }: SnackbarErrorProps) => {
   const [open, setOpen] = React.useState(true);
 
-  const handleClose = (event?: React.SyntheticEvent | Event, reason?: SnackbarCloseReason) => {
+  const handleClose = (_?: React.SyntheticEvent | Event, reason?: SnackbarCloseReason) => {
     if (reason === 'clickaway') {
       return;
     }
-
+    console.log('close');
     setOpen(false);
   };
 

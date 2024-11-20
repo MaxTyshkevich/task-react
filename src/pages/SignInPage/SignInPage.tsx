@@ -69,7 +69,7 @@ const SignInPage = () => {
         </Typography>
         {error && (
           <Typography color="error">
-            {error?.data?.message ?? 'An unexpected error occurred'}
+            {(error as any)?.data.message ?? 'An unexpected error occurred'}
           </Typography>
         )}
         <Box
@@ -108,7 +108,6 @@ const SignInPage = () => {
               type="password"
               id="password"
               autoComplete="current-password"
-              autoFocus
               required
               fullWidth
               variant="outlined"

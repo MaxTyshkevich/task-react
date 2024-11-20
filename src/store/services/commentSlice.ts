@@ -1,28 +1,29 @@
-import { IComment, IPost } from '../types';
+import { IComment, ICommenttWithProfile } from '../types';
 import { apiSlice } from './apiSlice';
+
+type ICreateComment = Omit<IComment, 'id'>;
 
 export const CommentApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getCommentsByPostId: builder.query<IComment[], string>({
+    getCommentsByPostId: builder.query<ICommenttWithProfile[], string>({
       query: (id) => ({
         url: `comments`,
         params: {
           postId: id,
-          _embed: 'profile',
+          _expand: 'profile',
         },
       }),
+      providesTags: ['Comment'],
     }),
 
-    createComment: builder.mutation<IComment[], any>({
+    createComment: builder.mutation<IComment, ICreateComment>({
       // добавить типы
-      query: (id) => ({
+      query: (newComment) => ({
         url: `comments`,
         method: 'POST',
-        params: {
-          postId: id,
-          _embed: 'profile',
-        },
+        body: newComment,
       }),
+      invalidatesTags: ['Post', 'Comment'],
     }),
   }),
 });

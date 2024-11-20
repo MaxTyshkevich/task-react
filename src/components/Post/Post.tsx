@@ -9,7 +9,6 @@ import { NavLink } from 'react-router-dom';
 import { favoriteActions } from '../../store/slices/Favorite';
 import { useAppDispatch, useAppSelector } from '../../store/store';
 import { getFavoriteCards } from '../../store/selectors/getFavoriteCards/getFavoriteCards';
-import { getUserAuthData } from '../../store/selectors/getUserAuthData/getUserAuthData';
 
 interface PostProps {
   post: IPostWithProfile;
@@ -39,9 +38,14 @@ export const Post = ({ post }: PostProps) => {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="like" onClick={() => setIsLiked(!isLiked)}>
+        <IconButton
+          aria-label="like"
+          onClick={() => {
+            setIsLiked(!isLiked);
+          }}
+        >
           <FavoriteIcon
-            sx={(...props) => {
+            sx={() => {
               return {
                 color: isLiked ? 'red' : 'grey',
               };
@@ -51,7 +55,7 @@ export const Post = ({ post }: PostProps) => {
 
         <IconButton aria-label="dislike" onClick={() => setIsDiliked(!isDiliked)}>
           <ThumbDownIcon
-            sx={(...props) => {
+            sx={() => {
               return {
                 color: isDiliked ? 'red' : 'grey',
               };

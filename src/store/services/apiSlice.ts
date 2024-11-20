@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { RootState } from '../store';
-import { getUserAuthData } from '../selectors/getUserAuthData/getUserAuthData';
 
 export const apiSlice = createApi({
   reducerPath: 'apiSlice',
@@ -16,6 +15,6 @@ export const apiSlice = createApi({
       return headers;
     },
   }),
-  tagTypes: ['Profile', 'Post'],
-  endpoints: (builder) => ({}),
+  tagTypes: ['Profile', 'Post', 'Comment'],
+  endpoints: () => ({}),
 });

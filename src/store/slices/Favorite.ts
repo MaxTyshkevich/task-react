@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { FAVORITE_LOCALSTORAGE_KEY } from '../../const/localStorage';
-import { IPost, IPostWithProfile } from '../types';
+import { IPostWithProfile } from '../types';
 
 export interface FavoritesSchema {
   favoriteCards: IPostWithProfile[];

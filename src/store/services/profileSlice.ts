@@ -1,4 +1,4 @@
-import { IComment, IPost, IProfile } from '../types';
+import { IProfile } from '../types';
 import { apiSlice } from './apiSlice';
 
 type UpdateProfile = Partial<Omit<IProfile, 'id'>> & { id: string };
@@ -8,6 +8,13 @@ export const profileApiSlice = apiSlice.injectEndpoints({
     getProfileById: builder.query<IProfile, string>({
       query: (profileId) => ({
         url: `profiles/${profileId}`,
+      }),
+
+      providesTags: ['Profile'],
+    }),
+    getAllProfile: builder.query<IProfile[], void>({
+      query: () => ({
+        url: `profiles`,
       }),
 
       providesTags: ['Profile'],
@@ -33,5 +40,9 @@ export const profileApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useGetProfileByIdQuery, useGetProfileOwnerQuery, useUpdateProfileMutation } =
-  profileApiSlice;
+export const {
+  useGetProfileByIdQuery,
+  useGetProfileOwnerQuery,
+  useUpdateProfileMutation,
+  useGetAllProfileQuery,
+} = profileApiSlice;

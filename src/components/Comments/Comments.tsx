@@ -9,9 +9,11 @@ interface CommentsProps {
 
 export const Comments = ({ PostId }: CommentsProps) => {
   const { data: comments } = useGetCommentsByPostIdQuery(PostId);
+
+  console.log({ comments });
   return (
-    <Box>
-      <CommentForm />
+    <Box sx={{ overflowY: 'auto' }}>
+      <CommentForm PostId={PostId} />
       {comments && <CommentList comments={comments} />}
     </Box>
   );

@@ -31,9 +31,9 @@ const URL_DEFAOUT_IMAGE =
 
 export default function PostModal() {
   const authProfile = useAppSelector(getUserAuthData);
-  const { data: ownerProfile, isLoading } = useGetProfileOwnerQuery(authProfile!.id); // будет точно тк мы залогинены;
+  const { data: ownerProfile } = useGetProfileOwnerQuery(authProfile!.id); // будет точно тк мы залогинены;
 
-  const [addPost] = useAddPostMutation();
+  const [addPost, { isLoading }] = useAddPostMutation();
   const [open, setOpen] = React.useState(false);
   const [description, setDescription] = React.useState('');
   const handleOpen = () => setOpen(true);

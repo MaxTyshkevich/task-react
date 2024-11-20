@@ -1,19 +1,19 @@
 import { Box, Typography } from '@mui/material';
-import React from 'react';
 import { useParams } from 'react-router-dom';
 import { FullPost } from '../../components/FullPost/FullPost';
 import { useGetPostQuery } from '../../store/services/postSlice';
 
 const PostDetailsPage = () => {
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
 
-  if (!id) {
-    return null;
-  }
-  const { data: post } = useGetPostQuery(id);
+  const { data: post } = useGetPostQuery(id as string);
 
   if (!post) {
-    return <Typography>Not found</Typography>;
+    return (
+      <Typography variant="body1" color="error" align="center" mt={4}>
+        Not found post!
+      </Typography>
+    );
   }
   return (
     <Box
@@ -24,6 +24,10 @@ const PostDetailsPage = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+
+        '& > *': {
+          flexGrow: 1,
+        },
       }}
     >
       <FullPost post={post} />

@@ -32,8 +32,8 @@ export interface IPost {
 export interface IComment {
   id: string;
   body: string;
-  post: IPost; // postId ?
-  profile: IProfile; // postId
+  postId: string;
+  profileId: string;
 }
 
 //update types
@@ -53,6 +53,14 @@ export interface IPostWithProfile {
   commentsIds: string[];
   likes: number;
   img: string;
+  profile: IProfile;
+}
+
+export interface ICommenttWithProfile {
+  id: string;
+  body: string;
+  postId: string;
+  profileId: string;
   profile: IProfile;
 }
 

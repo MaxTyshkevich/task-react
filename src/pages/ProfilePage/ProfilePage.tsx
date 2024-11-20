@@ -1,15 +1,18 @@
-import { Avatar, Box, Button, Card, CardContent, Grid, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import { useGetProfileByIdQuery } from '../../store/services/profileSlice';
 import { ProfileCard } from '../../components/ProfileCard/ProfileCard';
 
 const ProfilePage = () => {
   const { profileId } = useParams();
-  const { data: profile } = useGetProfileByIdQuery(profileId);
+  const { data: profile } = useGetProfileByIdQuery(profileId as string);
 
-  console.log({ profileId, profile });
   if (!profile) {
-    return null;
+    return (
+      <Typography variant="body1" color="error" align="center" mt={4}>
+        Not found profile!
+      </Typography>
+    );
   }
   return (
     <Box

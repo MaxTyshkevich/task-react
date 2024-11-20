@@ -1,9 +1,9 @@
-import { IComment } from '../../../store/types';
+import { ICommenttWithProfile } from '../../../store/types';
 import { Stack } from '@mui/material';
 import { CommentItem } from '../CommentItem/CommentItem';
 
 interface CommentListProps {
-  comments: IComment[];
+  comments: ICommenttWithProfile[];
 }
 export const CommentList = ({ comments }: CommentListProps) => {
   return (

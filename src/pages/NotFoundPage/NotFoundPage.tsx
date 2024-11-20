@@ -8,6 +8,11 @@ const NotFoundPage = () => {
   const onGoBack = () => {
     navigate(-1);
   };
+
+  const errorMessage =
+    (error as { statusText?: string; message?: string })?.statusText ||
+    (error as { statusText?: string; message?: string })?.message ||
+    'Unknown error';
   return (
     <Container sx={{ width: 1, height: '100vh' }}>
       <Box
@@ -23,7 +28,7 @@ const NotFoundPage = () => {
           Oops!
         </Typography>
         <Typography variant="subtitle1">Sorry, an unexpected error has occurred.</Typography>
-        <Typography variant="body1">{error.statusText || error.message}</Typography>
+        <Typography variant="body1">{errorMessage}</Typography>
         <Button variant="contained" onClick={onGoBack}>
           Go to back
         </Button>

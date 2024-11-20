@@ -14,90 +14,69 @@ import ForbiddenPage from '../../pages/ForbiddenPage/ForbiddenPage';
 import WelcomPage from '../../pages/WelcomPage/WelcomPage';
 import FavoritesPage from '../../pages/FavoritesPage/FavoritesPage';
 
-export const router = createBrowserRouter([
+export const router = createBrowserRouter(
+  [
+    {
+      path: '/',
+      element: <Layout />,
+      errorElement: <NotFoundPage />,
+      children: [
+        {
+          index: true,
+          element: <WelcomPage />,
+        },
+        {
+          path: 'sign-in',
+          element: <SignInPage />,
+        },
+        {
+          path: 'forbidden',
+          element: <ForbiddenPage />,
+        },
+        {
+          element: <RequireAuth />,
+          children: [
+            {
+              path: 'posts',
+              element: <PostsPage />,
+            },
+            {
+              path: 'profile/:profileId',
+              element: <ProfilePage />,
+            },
+            {
+              path: 'users',
+              element: <UsersPage />,
+            },
+            {
+              path: 'favorites',
+              element: <FavoritesPage />,
+            },
+            {
+              path: 'post/:id',
+              element: <PostDetailsPage />,
+            },
+          ],
+        },
+        {
+          element: <RequireAuth roles={[UserRole.ADMIN]} />,
+          children: [
+            {
+              path: 'admin',
+              element: <AdminPage />,
+            },
+          ],
+        },
+      ],
+    },
+  ],
   {
-    path: '/',
-    element: <Layout />,
-    errorElement: <NotFoundPage />,
-    children: [
-      {
-        index: true,
-        element: <WelcomPage />,
-      },
-      {
-        path: 'sign-in',
-        element: <SignInPage />,
-      },
-      {
-        path: 'forbidden',
-        element: <ForbiddenPage />,
-      },
-      {
-        element: <RequireAuth />,
-        children: [
-          {
-            path: 'posts',
-            element: <PostsPage />,
-          },
-          {
-            path: 'profile/:profileId',
-            element: <ProfilePage />,
-          },
-          {
-            path: 'users',
-            element: <UsersPage />,
-          },
-          {
-            path: 'favorites',
-            element: <FavoritesPage />,
-          },
-          {
-            path: 'post/:id',
-            element: <PostDetailsPage />,
-          },
-        ],
-      },
-      {
-        element: <RequireAuth roles={[UserRole.ADMIN]} />,
-        children: [
-          {
-            path: 'admin',
-            element: <AdminPage />,
-          },
-        ],
-      },
-    ],
+    future: {
+      v7_normalizeFormMethod: true,
+      v7_partialHydration: true,
+      v7_relativeSplatPath: true,
+      v7_fetcherPersist: true,
+      v7_skipActionErrorRevalidation: true,
+    },
   },
-]);
-
-/* 
-      {
-        path: '/sign-in',
-        element: <SignInPage />,
-      },
-      {
-        path: 'posts',
-        element: <PostsPage />,
-      },
-      {
-        path: 'profile/:profileId',
-        element: <ProfilePage />,
-      },
-      {
-        path: 'users',
-        element: <UsersPage />,
-      },
-      {
-        path: 'favorites',
-        element: <FavoritesPage />,
-      },
-      {
-        path: 'posts/:id',
-        element: <PostDetailsPage />,
-      },
-      {
-        path: 'admin',
-        element: <AdminPage />,
-      },
-
-*/
+);

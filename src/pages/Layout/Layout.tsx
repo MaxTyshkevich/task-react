@@ -1,14 +1,14 @@
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import MenuIcon from '@mui/icons-material/Menu';
 import { NavLink, Outlet } from 'react-router-dom';
 import { Box, Button, Container, Stack } from '@mui/material';
 import { AvatarTooltip } from '../../components/AvatarTooltip/AvatarTooltip';
-import TransitionsModal from '../../components/PostModal/PostModal';
+
 import { useAppSelector } from '../../store/store';
 import { getUserAuthData } from '../../store/selectors/getUserAuthData/getUserAuthData';
+import { UserRole } from '../../store/types';
+import { useMemo } from 'react';
 
 const LINKS = [
   { text: 'Posts', path: '/posts' },
@@ -19,7 +19,11 @@ export const Layout = () => {
   // проверка авторизован ли пользователь
 
   const isAuth = useAppSelector(getUserAuthData);
+  const isAdmin = isAuth?.roles.includes(UserRole.ADMIN);
 
+  const navigationLinks = useMemo(() => {
+    return isAdmin ? [...LINKS, { text: 'Admin', path: '/admin' }] : LINKS;
+  }, [isAdmin]);
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
       <AppBar position="static">
@@ -27,7 +31,7 @@ export const Layout = () => {
           {isAuth ? (
             <>
               <Stack direction={'row'} gap={2}>
-                {LINKS.map(({ text, path }) => (
+                {navigationLinks.map(({ text, path }) => (
                   <Button component={NavLink} to={path} key={text} variant="text" color="inherit">
                     {text}
                   </Button>

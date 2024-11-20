@@ -33,7 +33,68 @@
       "id": "TXWkTDG"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "postId": "2",
+      "profileId": "2",
+      "body": "super post",
+      "id": 1
+    },
+    {
+      "postId": "TXWkTDG",
+      "profileId": "2",
+      "body": "lol",
+      "id": 2
+    },
+    {
+      "postId": "TXWkTDG",
+      "profileId": "2",
+      "body": "cool\n",
+      "id": 3
+    },
+    {
+      "postId": "TXWkTDG",
+      "profileId": "2",
+      "body": "many3\n",
+      "id": 4
+    },
+    {
+      "postId": "TXWkTDG",
+      "profileId": "2",
+      "body": "many comments\n",
+      "id": 5
+    },
+    {
+      "postId": "TXWkTDG",
+      "profileId": "2",
+      "body": "next comment\n",
+      "id": 6
+    },
+    {
+      "postId": "2",
+      "profileId": "2",
+      "body": "фывфывф",
+      "id": 7
+    },
+    {
+      "postId": "4",
+      "profileId": "2",
+      "body": "wow!",
+      "id": 8
+    },
+    {
+      "postId": "4",
+      "profileId": "2",
+      "body": "thanks",
+      "id": 9
+    },
+    {
+      "postId": "TXWkTDG",
+      "profileId": "1",
+      "body": "comment",
+      "id": 10
+    }
+  ],
   "users": [
     {
       "id": "1",
@@ -68,11 +129,6 @@
       "lastName": "Zalesskaya",
       "age": 18,
       "avatar": "https://as2.ftcdn.net/v2/jpg/06/43/68/65/1000_F_643686558_Efl6HB1ITw98bx1PdAd1wy56QpUTMh47.webp"
-    },
-    {
-      "login": "admin",
-      "password": "123",
-      "id": "YNyD9jy"
     }
   ]
 }
