@@ -13,7 +13,7 @@ const PostsPage = () => {
     return;
   }
   return (
-    <Container>
+    <Container sx={{ height: 1 }}>
       <Stack direction="row" justifyContent="space-between" mt={2}>
         <Filters />
         <PostModal />
@@ -21,7 +21,7 @@ const PostsPage = () => {
 
       <Grid container spacing={[2, 4]} mt={4}>
         {posts?.map((post) => (
-          <Grid item xs={12} md={6} key={post.id}>
+          <Grid size={{ xs: 12, sm: 6 }} key={post.id}>
             <Post post={post} />
           </Grid>
         ))}

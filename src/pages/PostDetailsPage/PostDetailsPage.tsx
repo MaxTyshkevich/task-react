@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import { FullPost } from '../../components/FullPost/FullPost';
 import { useGetPostQuery } from '../../store/services/postSlice';
@@ -16,7 +16,7 @@ const PostDetailsPage = () => {
     );
   }
   return (
-    <Box
+    <Container
       sx={{
         padding: 2,
         width: 1,
@@ -31,7 +31,7 @@ const PostDetailsPage = () => {
       }}
     >
       <FullPost post={post} />
-    </Box>
+    </Container>
   );
 };
 

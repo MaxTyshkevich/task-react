@@ -18,7 +18,7 @@ const FavoritesPage = () => {
   }
 
   return (
-    <Container>
+    <Container sx={{ height: 1 }}>
       <Grid container spacing={[2, 4]} mt={4}>
         {favoritePosts.map((post) => (
           <Grid size={{ xs: 12, md: 6 }} key={post.id}>

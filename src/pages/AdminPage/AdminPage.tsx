@@ -1,10 +1,10 @@
-import { Box, Typography } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 
 const AdminPage = () => {
   return (
-    <Box>
+    <Container sx={{ height: 1 }}>
       <Typography variant="h4">Admin Page! Only for admin</Typography>
-    </Box>
+    </Container>
   );
 };
 

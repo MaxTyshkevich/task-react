@@ -33,7 +33,18 @@ export const Post = ({ post }: PostProps) => {
       </NavLink>
 
       <CardContent>
-        <Typography variant="body1" sx={{ color: 'text.secondary' }}>
+        <Typography
+          variant="body1"
+          sx={{
+            color: 'text.secondary',
+            height: 48,
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            display: '-webkit-box',
+            WebkitLineClamp: '2',
+            WebkitBoxOrient: 'vertical',
+          }}
+        >
           {post.body}
         </Typography>
       </CardContent>

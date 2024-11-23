@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import { useGetProfileByIdQuery } from '../../store/services/profileSlice';
 import { ProfileCard } from '../../components/ProfileCard/ProfileCard';
@@ -15,7 +15,7 @@ const ProfilePage = () => {
     );
   }
   return (
-    <Box
+    <Container
       sx={{
         width: 1,
         minHeight: 1,
@@ -25,7 +25,7 @@ const ProfilePage = () => {
       }}
     >
       <ProfileCard profile={profile} />
-    </Box>
+    </Container>
   );
 };
 

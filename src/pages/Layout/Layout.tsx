@@ -46,10 +46,10 @@ export const Layout = () => {
           )}
         </Toolbar>
       </AppBar>
-
-      <Container component="main" sx={{ flexGrow: 1, overflowY: 'auto' }}>
+      <Box sx={{ flexGrow: 1, overflowY: 'auto' }} component="main">
         <Outlet />
-      </Container>
+      </Box>
+
       <Box component="footer" sx={{ p: 2, bgcolor: 'primary.main' }}>
         <Typography align="center" color="primary.contrastText">
           Testing work 2024

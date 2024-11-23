@@ -11,12 +11,9 @@ import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
 import { useLoginMutation } from '../../store/services/authSlice';
 import { useState } from 'react';
-import { useAppDispatch } from '../../store/store';
-import { authActions } from '../../store/slices/Auth';
 import { useNavigate } from 'react-router-dom';
 
 const SignInPage = () => {
-  const dispatch = useAppDispatch();
   const [login, { isLoading, error }] = useLoginMutation();
   const navigate = useNavigate();
 
