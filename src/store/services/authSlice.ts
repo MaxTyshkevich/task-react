@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+import { authActions } from '../slices/Auth';
 import { apiSlice } from './apiSlice';
 
 interface UserData {
@@ -13,6 +15,12 @@ export const authApiSlice = apiSlice.injectEndpoints({
         method: 'POST',
         body: { ...credentials },
       }),
+      async onQueryStarted(_, { queryFulfilled, dispatch }) {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch(authActions.setAuthData(data));
+        } catch (error) {}
+      },
     }),
   }),
 });

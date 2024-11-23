@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IUser } from '../types';
 import { USER_LOCALSTORAGE_KEY } from '../../const/localStorage';
+import { authApiSlice } from '../services/authSlice';
 
 export interface UserSchema {
   authData: IUser | null;
@@ -25,6 +26,12 @@ export const AuthSlice = createSlice({
       state.authData = null;
       localStorage.removeItem(USER_LOCALSTORAGE_KEY);
     },
+  },
+  extraReducers(builder) {
+    /*  builder.addMatcher(authApiSlice.endpoints.login.matchFulfilled, (state, { payload }) => {
+      console.log(`builder.addMatcher`);
+      state.authData = payload;
+    }); */
   },
 });
 

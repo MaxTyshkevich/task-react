@@ -9,20 +9,23 @@ import PostModal from '../../components/PostModal/PostModal';
 const PostsPage = () => {
   const { data: posts, error } = useGetAllPostQuery(null);
 
+  if (!posts) {
+    return;
+  }
   return (
     <Container>
-      <Stack direction={'row'} justifyContent={'space-between'} mt={2}>
+      <Stack direction="row" justifyContent="space-between" mt={2}>
         <Filters />
         <PostModal />
       </Stack>
 
       <Grid container spacing={[2, 4]} mt={4}>
         {posts?.map((post) => (
-          <Grid size={{ xs: 12, md: 6 }} key={post.id}>
+          <Grid item xs={12} md={6} key={post.id}>
             <Post post={post} />
           </Grid>
         ))}
-        {error && <SnackbarError message={'Ошибка при загрузке постов :('} />}
+        {error && <SnackbarError message="Error loading posts :(" />}
       </Grid>
     </Container>
   );

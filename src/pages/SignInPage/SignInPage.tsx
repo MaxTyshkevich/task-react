@@ -23,6 +23,7 @@ const SignInPage = () => {
   const [userLogin, setUserLogin] = useState('');
   const [userPwd, setUserPwd] = useState('');
 
+  console.log(`error from login`, error);
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -31,12 +32,9 @@ const SignInPage = () => {
     }
 
     try {
-      const userData = await login({ login: userLogin, password: userPwd }).unwrap();
-      dispatch(authActions.setAuthData(userData));
-      navigate('/posts');
-    } catch (error) {
-      // обработать ошибку
-    }
+      await login({ login: userLogin, password: userPwd }).unwrap();
+      navigate('/posts', { replace: true });
+    } catch (err) {}
   };
 
   const onChangeLoginInput = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>

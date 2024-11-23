@@ -13,6 +13,7 @@ import { UserRole } from '../../store/types';
 import ForbiddenPage from '../../pages/ForbiddenPage/ForbiddenPage';
 import WelcomPage from '../../pages/WelcomPage/WelcomPage';
 import FavoritesPage from '../../pages/FavoritesPage/FavoritesPage';
+import { PublicAuth } from './PublicAuth';
 
 export const router = createBrowserRouter(
   [
@@ -22,17 +23,23 @@ export const router = createBrowserRouter(
       errorElement: <NotFoundPage />,
       children: [
         {
-          index: true,
-          element: <WelcomPage />,
-        },
-        {
-          path: 'sign-in',
-          element: <SignInPage />,
-        },
-        {
           path: 'forbidden',
           element: <ForbiddenPage />,
         },
+        {
+          element: <PublicAuth />,
+          children: [
+            {
+              index: true,
+              element: <WelcomPage />,
+            },
+            {
+              path: 'sign-in',
+              element: <SignInPage />,
+            },
+          ],
+        },
+
         {
           element: <RequireAuth />,
           children: [
