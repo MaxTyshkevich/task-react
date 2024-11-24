@@ -5,13 +5,16 @@ import './App.css';
 import { router } from './providers/routes/routes';
 
 import MuiProvider from './providers/mui/MuiProvider';
-import { store } from './store/store';
+import { persistor, store } from './store/store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 function App() {
   return (
     <MuiProvider>
       <Provider store={store}>
-        <RouterProvider router={router} />
+        <PersistGate loading={null} persistor={persistor}>
+          <RouterProvider router={router} />
+        </PersistGate>
       </Provider>
     </MuiProvider>
   );

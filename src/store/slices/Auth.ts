@@ -6,10 +6,9 @@ import { authApiSlice } from '../services/authSlice';
 export interface UserSchema {
   authData: IUser | null;
 }
-const storedToken = localStorage.getItem(USER_LOCALSTORAGE_KEY);
 
 const initialState: UserSchema = {
-  authData: storedToken ? JSON.parse(storedToken) : null,
+  authData: null,
 };
 
 export const AuthSlice = createSlice({
@@ -17,14 +16,12 @@ export const AuthSlice = createSlice({
   initialState,
   reducers: {
     setAuthData: (state, action: PayloadAction<IUser>) => {
-      localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(action.payload));
       state.authData = action.payload;
     },
 
     logout: (state) => {
       console.log('logout');
       state.authData = null;
-      localStorage.removeItem(USER_LOCALSTORAGE_KEY);
     },
   },
   extraReducers(builder) {

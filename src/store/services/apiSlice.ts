@@ -1,4 +1,10 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import {
+  BaseQueryApi,
+  createApi,
+  FetchArgs,
+  fetchBaseQuery,
+  FetchBaseQueryError,
+} from '@reduxjs/toolkit/query/react';
 import { RootState } from '../store';
 
 const baseQuery = fetchBaseQuery({
@@ -14,7 +20,11 @@ const baseQuery = fetchBaseQuery({
   },
 });
 
-export const baseQueryWithRejection = async (args, api, extraOptions) => {
+export const baseQueryWithRejection = async (
+  args: string | FetchArgs,
+  api: BaseQueryApi,
+  extraOptions: any,
+) => {
   const result = await baseQuery(args, api, extraOptions);
 
   if (result.error) {
