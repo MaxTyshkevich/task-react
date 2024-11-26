@@ -5,10 +5,12 @@ import { authApiSlice } from '../services/authSlice';
 
 export interface UserSchema {
   authData: IUser | null;
+  isRemember: boolean;
 }
 
 const initialState: UserSchema = {
   authData: null,
+  isRemember: false,
 };
 
 export const AuthSlice = createSlice({
@@ -17,6 +19,9 @@ export const AuthSlice = createSlice({
   reducers: {
     setAuthData: (state, action: PayloadAction<IUser>) => {
       state.authData = action.payload;
+    },
+    changeRemenber: (state) => {
+      state.isRemember = !state.isRemember;
     },
 
     logout: (state) => {

@@ -12,15 +12,19 @@ import MuiCard from '@mui/material/Card';
 import { useLoginMutation } from '../../store/services/authSlice';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { authActions } from '../../store/slices/Auth';
+import { useAppDispatch, useAppSelector } from '../../store/store';
+import { getIsRemember } from '../../store/selectors/getUserAuthData/getUserAuthData';
 
 const SignInPage = () => {
+  const dispatch = useAppDispatch();
   const [login, { isLoading, error }] = useLoginMutation();
   const navigate = useNavigate();
-
+  const isRemember = useAppSelector(getIsRemember);
   const [userLogin, setUserLogin] = useState('');
   const [userPwd, setUserPwd] = useState('');
 
-  console.log(`error from login`, error);
+  console.log(`isRemember`, isRemember);
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -39,6 +43,10 @@ const SignInPage = () => {
 
   const onChangePwdInput = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setUserPwd(e.target.value);
+
+  const onChangeRememberMe = () => {
+    dispatch(authActions.changeRemenber());
+  };
 
   return (
     <Stack
@@ -109,7 +117,9 @@ const SignInPage = () => {
             />
           </FormControl>
           <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
+            control={
+              <Checkbox color="primary" onChange={onChangeRememberMe} checked={isRemember} />
+            }
             label="Remember me"
           />
 
