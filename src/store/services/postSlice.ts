@@ -3,15 +3,41 @@ import { apiSlice } from './apiSlice';
 
 type ICreatePost = Omit<IPost, 'id'>;
 
+interface PostFilters {
+  filterByName?: string;
+}
+
+interface getAllPostProps {
+  filters?: PostFilters;
+}
+
 export const PostApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getAllPost: builder.query<IPostWithProfile[], null>({
-      query: () => ({
-        url: `posts`,
-        params: {
+    getAllPost: builder.query<IPostWithProfile[], getAllPostProps>({
+      query: ({ filters }) => {
+        const params: Record<string, string> = {
           _expand: 'profile',
-        },
-      }),
+        };
+
+        console.log(`query`, filters);
+
+        return {
+          url: `posts`,
+          params,
+        };
+      },
+      transformResponse(posts: IPostWithProfile[] | null, meta, { filters }): IPostWithProfile[] {
+        if (!posts) {
+          return [];
+        }
+        console.log(posts);
+        if (filters?.filterByName) {
+          return posts.filter((post) => {
+            return post.profile.firstName === filters.filterByName;
+          });
+        }
+        return posts;
+      },
       providesTags: ['Post'],
     }),
     getPost: builder.query<IPostWithProfile, string>({

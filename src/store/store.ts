@@ -17,10 +17,12 @@ import {
 //persist
 
 import { persistConfig } from './persist/persist';
+import { filterPostsReducer } from './slices/Filters';
 
 const rootReducer = persistCombineReducers(persistConfig, {
   auth: authReducer,
   favorite: favoriteReducer,
+  filterPosts: filterPostsReducer,
   [apiSlice.reducerPath]: apiSlice.reducer,
 });
 

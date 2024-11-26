@@ -6,8 +6,16 @@ import Grid from '@mui/material/Grid2';
 import { SnackbarError } from '../../components/SnackbarError/SnackbarError';
 import { useGetAllPostQuery } from '../../store/services/postSlice';
 import PostModal from '../../components/PostModal/PostModal';
+
+import { useSearchParams } from 'react-router-dom';
 const PostsPage = () => {
-  const { data: posts, error } = useGetAllPostQuery(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  console.log(searchParams);
+  const { data: posts, error } = useGetAllPostQuery({
+    filters: {
+      filterByName: searchParams.get('name') ?? undefined,
+    },
+  });
 
   if (!posts) {
     return;
