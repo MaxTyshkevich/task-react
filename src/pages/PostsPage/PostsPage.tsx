@@ -8,12 +8,13 @@ import { useGetAllPostQuery } from '../../store/services/postSlice';
 import PostModal from '../../components/PostModal/PostModal';
 
 import { useSearchParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
 const PostsPage = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  console.log(searchParams);
+  const filterByName = useSelector((state: RootState) => state.filterPosts.filterByName);
   const { data: posts, error } = useGetAllPostQuery({
     filters: {
-      filterByName: searchParams.get('name') ?? undefined,
+      filterByName: filterByName === 'All' ? undefined : (filterByName ?? undefined),
     },
   });
 

@@ -29,6 +29,11 @@ export const Filters = () => {
     const nameFromUrl = searchParams.get('name');
     if (nameFromUrl && nameFromUrl !== filterByName) {
       dispatch(filterPostsActions.selectFilterByName(nameFromUrl));
+      if (nameFromUrl === 'All') {
+        const params = new URLSearchParams(searchParams);
+        params.delete('name');
+        setSearchParams(params);
+      }
     }
   }, [searchParams, filterByName]);
 
@@ -37,7 +42,7 @@ export const Filters = () => {
     dispatch(filterPostsActions.selectFilterByName(selectedName));
 
     const params = new URLSearchParams(searchParams);
-    if (selectedName) {
+    if (selectedName && selectedName !== 'All') {
       params.set('name', selectedName);
     } else {
       params.delete('name');
@@ -62,6 +67,7 @@ export const Filters = () => {
           onChange={handleChange}
         >
           {menuItems}
+          <MenuItem value={'All'}>ALL users</MenuItem>
         </Select>
       </FormControl>
     </Box>

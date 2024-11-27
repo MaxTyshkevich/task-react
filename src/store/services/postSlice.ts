@@ -30,7 +30,7 @@ export const PostApiSlice = apiSlice.injectEndpoints({
         if (!posts) {
           return [];
         }
-        console.log(posts);
+        console.log({ posts, filters });
         if (filters?.filterByName) {
           return posts.filter((post) => {
             return post.profile.firstName === filters.filterByName;

@@ -7,7 +7,7 @@ interface filterPostsSliceShema {
 }
 
 const initialState: filterPostsSliceShema = {
-  filterByName: '',
+  filterByName: 'All',
 };
 
 const filterPostsSlice = createSlice({
