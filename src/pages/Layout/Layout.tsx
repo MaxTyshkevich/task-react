@@ -10,10 +10,7 @@ import { getUserAuthData } from '../../store/selectors/getUserAuthData/getUserAu
 import { UserRole } from '../../store/types';
 import { useMemo } from 'react';
 
-const LINKS = [
-  { text: 'Posts', path: '/posts' },
-  { text: 'Users', path: '/users' },
-];
+const LINKS = [{ text: 'Posts', path: '/posts' }];
 
 export const Layout = () => {
   // проверка авторизован ли пользователь

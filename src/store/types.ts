@@ -26,7 +26,12 @@ export interface IPost {
   body: string;
   commentsIds: string[];
   img: string;
-  likes: number;
+  likes: ProfileLiks[];
+}
+
+interface ProfileLiks {
+  id: string;
+  profileId: string;
 }
 
 export interface IComment {

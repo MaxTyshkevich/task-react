@@ -28,14 +28,15 @@ export const Filters = () => {
   useEffect(() => {
     const nameFromUrl = searchParams.get('name');
     if (nameFromUrl && nameFromUrl !== filterByName) {
-      dispatch(filterPostsActions.selectFilterByName(nameFromUrl));
       if (nameFromUrl === 'All') {
         const params = new URLSearchParams(searchParams);
         params.delete('name');
         setSearchParams(params);
       }
+
+      dispatch(filterPostsActions.selectFilterByName(nameFromUrl));
     }
-  }, [searchParams, filterByName]);
+  }, [searchParams]);
 
   const handleChange = (event: SelectChangeEvent) => {
     const selectedName = event.target.value;
@@ -55,8 +56,9 @@ export const Filters = () => {
     return null;
   }
   return (
-    <Box sx={{ width: 1 / 2 }}>
+    <Box sx={{ width: 1 / 2, display: 'flex', flexDirection: 'column', gap: 2, padding: 2 }}>
       <Typography>Filters:</Typography>
+
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">By name</InputLabel>
         <Select

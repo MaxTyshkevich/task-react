@@ -4,10 +4,12 @@ import { IPostWithProfile } from '../types';
 
 interface filterPostsSliceShema {
   filterByName: string;
+  page: number;
 }
 
 const initialState: filterPostsSliceShema = {
   filterByName: 'All',
+  page: 1,
 };
 
 const filterPostsSlice = createSlice({
@@ -16,6 +18,10 @@ const filterPostsSlice = createSlice({
   reducers: {
     selectFilterByName: (state, action: PayloadAction<string>) => {
       state.filterByName = action.payload;
+      state.page = 1;
+    },
+    nextPage(state) {
+      state.page += 1;
     },
   },
 });

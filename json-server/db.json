@@ -5,7 +5,14 @@
       "profileId": "1",
       "body": "second post",
       "commentsIds": [],
-      "likes": 0,
+      "likes": {
+        "profilesIds": [
+          {
+            "id": "1",
+            "profileId": "2"
+          }
+        ]
+      },
       "img": "https://cdn.shopify.com/app-store/listing_images/e6ee42baea8c91d0e9fa0fbbe84c3545/promotional_image/CIGU8LrTg4cDEAE=.jpeg?height=720&quality=90&width=1280"
     },
     {
@@ -13,7 +20,12 @@
       "profileId": "1",
       "body": "new post",
       "commentsIds": [],
-      "likes": 11,
+      "likes": [
+        {
+          "id": "1",
+          "profileId": "2"
+        }
+      ],
       "img": "https://picture.plus/web/assets/img/picture-vk_post.png"
     },
     {
@@ -27,7 +39,12 @@
     {
       "profileId": "2",
       "commentsIds": [],
-      "likes": 0,
+      "likes": [
+        {
+          "id": "1",
+          "profileId": "2"
+        }
+      ],
       "body": "first post \n223424",
       "img": "https://media.istockphoto.com/id/1396814518/vector/image-coming-soon-no-photo-no-thumbnail-image-available-vector-illustration.jpg?s=612x612&w=0&k=20&c=hnh2OZgQGhf0b46-J2z7aHbIWwq8HNlSDaNp2wn_iko=",
       "id": "TXWkTDG"
@@ -35,7 +52,12 @@
     {
       "profileId": "2",
       "commentsIds": [],
-      "likes": 0,
+      "likes": [
+        {
+          "id": "1",
+          "profileId": "2"
+        }
+      ],
       "body": "sdfsfd",
       "img": "https://media.istockphoto.com/id/1396814518/vector/image-coming-soon-no-photo-no-thumbnail-image-available-vector-illustration.jpg?s=612x612&w=0&k=20&c=hnh2OZgQGhf0b46-J2z7aHbIWwq8HNlSDaNp2wn_iko=",
       "id": "TDCZR-G"
@@ -43,10 +65,36 @@
     {
       "profileId": "1",
       "commentsIds": [],
-      "likes": 0,
+      "likes": [
+        {
+          "id": "1",
+          "profileId": "2"
+        }
+      ],
       "body": "next post\n",
       "img": "https://media.istockphoto.com/id/1396814518/vector/image-coming-soon-no-photo-no-thumbnail-image-available-vector-illustration.jpg?s=612x612&w=0&k=20&c=hnh2OZgQGhf0b46-J2z7aHbIWwq8HNlSDaNp2wn_iko=",
       "id": "vPZ9GOo"
+    },
+    {
+      "profileId": "2",
+      "commentsIds": [],
+      "likes": [
+        {
+          "id": "1",
+          "profileId": "2"
+        }
+      ],
+      "body": "вапвап43534534",
+      "img": "https://media.istockphoto.com/id/1396814518/vector/image-coming-soon-no-photo-no-thumbnail-image-available-vector-illustration.jpg?s=612x612&w=0&k=20&c=hnh2OZgQGhf0b46-J2z7aHbIWwq8HNlSDaNp2wn_iko=",
+      "id": "QRrB9XI"
+    },
+    {
+      "profileId": "1",
+      "commentsIds": [],
+      "likes": [],
+      "body": "mmmmmm",
+      "img": "https://media.istockphoto.com/id/1396814518/vector/image-coming-soon-no-photo-no-thumbnail-image-available-vector-illustration.jpg?s=612x612&w=0&k=20&c=hnh2OZgQGhf0b46-J2z7aHbIWwq8HNlSDaNp2wn_iko=",
+      "id": "AGw7B4z"
     }
   ],
   "comments": [

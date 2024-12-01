@@ -51,10 +51,7 @@ export const router = createBrowserRouter(
               path: 'profile/:profileId',
               element: <ProfilePage />,
             },
-            {
-              path: 'users',
-              element: <UsersPage />,
-            },
+
             {
               path: 'favorites',
               element: <FavoritesPage />,
@@ -71,6 +68,12 @@ export const router = createBrowserRouter(
             {
               path: 'admin',
               element: <AdminPage />,
+              children: [
+                {
+                  path: 'users',
+                  element: <UsersPage />,
+                },
+              ],
             },
           ],
         },
